@@ -1,0 +1,49 @@
+/*if you just want to adjust the size of the stage and the thumbnails, you can do so by editing the following lines: */
+.pika-thumbs li{width:100%; height:72px;}
+.pika-stage {margin-bottom:0; line-height:0;overflow:hidden;}
+
+
+body{}
+a{}
+/*.pikachoose {width: 500px; margin: 0 auto;}*/
+.pika-stage {position: relative;}
+	
+	/*if you change the padding on pika-stage you must adjust the top left of this to match! */
+	.pika-stage .main-image {position: absolute; top: 0px; left: 0px;}
+	.pika-stage .pika-aniwrap{position: absolute; top: 0px; left: 0px;}
+	.pika-stage .pika-ani {position:relative;display: none;z-index:2;margin:0 auto;}
+	.pika-stage img {border:0;}
+
+.pika-stage .caption {position: absolute;}
+	.pika-stage .caption p {padding: 0; margin: 0; line-height: 14px;}
+
+.pika-imgnav a {position: absolute; text-indent: -5000px; display: block;z-index:3;cursor:pointer;}
+	.pika-imgnav a.previous {width:20px;height:20px;border-left: 5px solid #FFF;border-top: 5px solid #FFF;opacity:0;-webkit-transition: opacity 300ms linear;
+		-webkit-transform: rotate(-45deg);-moz-transform: rotate(-45deg);transform: rotate(-45deg);top:45%;left:10px;}
+	.pika-imgnav a.next {width:20px;height:20px;border-right: 5px solid #FFF;border-top: 5px solid #FFF;opacity:0;-webkit-transition: opacity 300ms linear;
+		-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);transform: rotate(45deg);top:45%;right:10px;}
+	.pika-imgnav a:hover{opacity:.6;-webkit-transition: opacity 300ms linear;}	
+
+	.pika-imgnav a.play  {border-color: transparent transparent rgba(255,255,255,.7);border-style: solid;border-width: 0 0 25px 25px;height: 0;width: 0;position:absolute;
+		-webkit-transform: rotate(-45deg);-moz-transform: rotate(-45deg);transform: rotate(-45deg);top:14px;left:47%;display:none;}
+	.pika-imgnav a.pause {display:none;border-left:5px solid rgba(255,255,255,.7);border-right:5px solid rgba(255,255,255,.8);height: 30px;width: 14px; position:absolute;top:10px;left:47%;}
+
+.pika-textnav {display:none;}
+	
+.pika-thumbs {}
+	.pika-thumbs li {list-style-type: none; cursor: pointer;}
+
+		.pika-thumbs li:last {margin: 0;}
+		.pika-thumbs li .clip {margin-right:0; height:100%; overflow: hidden;}
+
+/*for the tool tips*/
+.pika-tooltip{display:none}
+.pika-counter{display:none}
+	
+		
+/* jCarousel Styles */
+/*if you're not using the carousel you can delete everything below this */
+.jcarousel-skin-pika .jcarousel-container-horizontal { padding: 15px 20px; overflow:hidden;}
+.jcarousel-skin-pika .jcarousel-clip-horizontal {height: 90px; width: 485px;}
+.jcarousel-skin-pika .jcarousel-item-horizontal { margin-right: 10px;}
+
