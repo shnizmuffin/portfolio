@@ -1,0 +1,65 @@
+/* PRE-SASS WORKING CSS Document */
+
+@import url(http://fonts.googleapis.com/css?family=Wire+One);
+
+html{
+	/*background:url(../img/bg.png) repeat;*/
+}
+
+body {
+	-webkit-font-smoothing:antialiased;
+	font-family: 'Wire One', 'Arial Narrow', sans-serif; /* DBONANNI - change to SASS var */
+	background-color: #4c4c4c; /* DBONANNI - change to SASS var */
+	padding-top: 40px;
+}
+
+h1 {
+	font-size:120px; /* DBONANNI -- remove, is covered by .giga class */
+	font-weight:normal;
+}
+
+h2 {
+	/*font-size:3em;*/
+	font-weight:normal;
+	/*margin:0.5em 0 0 0.5em;*/
+}
+
+h3 {}
+
+p {
+	font-family:'Arial Narrow', sans-serif;
+	/*padding:1em;*/
+}
+
+ul{
+	/*list-style:none;*/
+}
+
+li{
+	/*font-size:2em;*/
+}
+
+.header{
+	width: auto;
+	float: left;
+}
+
+#title{
+	background-color: #d3d3d3; /* DBONANNI - change to SASS var light grey */
+	padding:15px 40px;
+	
+}
+
+.nav--stacked > li > a{
+	display: inline-block;
+}
+
+.btn{
+	background-color: #d3d3d3; /* DBONANNI - change to SASS var light grey */
+	margin-bottom: 10px;
+	padding-left: 40px;
+}
+
+.btn--lrg{
+	font-size: 2rem; /* DBONANNI - overrides Inuit completely */
+}

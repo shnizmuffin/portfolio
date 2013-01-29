@@ -65,7 +65,7 @@ $desk-start:        1024px!default;
 /**
  * Font-sizes (in pixels). Refer to relevant sections for their implementations.
  */
-$giga-size:         96px!default;
+$giga-size:         120px!default;
 $mega-size:         72px!default;
 $kilo-size:         48px!default;
 
@@ -104,7 +104,26 @@ $close-quote:   null;
 /**
  * Brand stuff
  */
-$brand-color:       #4a8ec2!default;
+$domb-color-charcoal:     #4c4c4c!default; // background 'charcoal'
+
+$domb-color-light-grey:   #d3d3d3!default; // primary grey 'light grey'
+$domb-color-light-grey-h: #ededed!default; // primary grey highlight 'white smoke'
+$domb-color-light-grey-s: #828282!default; // primary grey shadow 'grey'
+
+$domb-color-wasabi:       #618c34!default; // primary green 'wasabi'
+$domb-color-wasabi-h:     #9BC16F!default; // primary green highlight 'olivine'
+$domb-color-wasabi-s:     #3C5420!default; // primary green shadow 'army green'
+
+$domb-color-tulip-tree:   #e2af3b!default; // primary yellow
+$domb-color-tulip-tree-h: #F9D07D!default; // primary yellow highlight 'golden glow'
+$domb-color-tulip-tree-s: #967229!default; // primary yellow shadow 'buttered rum'
+
+$domb-color-rust:         #B73913!default; // primary red
+$domb-color-rust-h:       #E57A61!default; // primary red highlight 'terra cotta'
+$domb-color-rust-s:       #7C230E!default; // primary red shadow 'saddle brown'
+
+$brand-color:       #4a8ec2!default; // deep sky blue
+
 $brand-face:        "Wire One", "arial narrow", sans-serif!default;
 
 
