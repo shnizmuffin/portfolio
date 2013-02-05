@@ -84,7 +84,7 @@ var AppView = Backbone.View.extend({
 
     render: function (){
         this.$el.html(this.template({
-        	item_title: app.BehanceUser.attributes.projects.length,
+        	item_title: app.BehanceProject.attributes.name,
         	item_description: app.BehanceProject.attributes.description
         }));
     }
