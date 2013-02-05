@@ -12,44 +12,18 @@
 	<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" />
     <!--link rel="stylesheet" href="css/dombonanni.css" type="text/css" media="screen" /-->
     
-    <script type="text/javascript" src="js/libs/jquery-1.9.0.min.js"></script>
-    <script type="text/javascript" src="js/libs/underscore-min.js"></script>
-    <script type="text/javascript" src="js/libs/backbone-min.js"></script>
-    
-    <script type="text/javascript" src="js/libs/be.js"></script>
-    <script type="text/javascript" src="js/libs/be/users/projects.js"></script>
-    <script type="text/javascript" src="js/libs/be/users/wips.js"></script>
-  	<script type="text/javascript" src="js/libs/be/users/collections.js"></script>
-  	<script type="text/javascript" src="js/libs/be/users.js"></script>
- 	<script type="text/javascript" src="js/libs/be/collections.js"></script>
-  	<script type="text/javascript" src="js/libs/be/projects/comments.js"></script>
-  	<script type="text/javascript" src="js/libs/be/projects.js"></script>
-  	<script type="text/javascript" src="js/libs/be/wips/revisions.js"></script>
-  	<script type="text/javascript" src="js/libs/be/wips.js"></script>
-  	<script type="text/javascript" src="js/libs/be/search.js"></script>
-  
-  	<script type="text/javascript" src="dombonanni.js"></script>
-    
-	<script type="text/javascript">
-
-		$(document).ready(
-			function (){
-			});
-	</script>
-
-	
 </head>
 
 
 <body class="grid-wrapper"><!-- open wrapper -->
     <div class="grid one-whole">
-    	<div class="header"><!-- open header -->
+    	<div class="header" id="title_container"><!-- open header -->
         	<h1 id="title" class="giga">Dom Bonanni</h1>
         </div><!-- closes header -->
         
     </div>
         
-    <div class="grid">
+    <div class="grid" id="nav_container">
         <ul class="nav nav--stacked">
             <li><a class="btn btn--lrg" href="#" title="Home">About</a></li>
             <li><a class="btn btn--lrg" href="#" title="Portfolio">Portfolio</a></li>
@@ -61,16 +35,10 @@
     
     </div>
     
-	<div class="grid one-whole">
-        <div class=""><!-- opens about -->
-     		<p>This site is still in beta and may not be compatible with certain browsers.</p>
-        
-    	</div><!-- /about -->
-        
-    </div>
-    
-    <div class=""><!-- opens portfolio -->
-		<div class="grid nine-twelfths">
+    <div class="" id="portfolio_container"><!-- opens portfolio -->
+		<!--
+
+        <div class="grid nine-twelfths">
         	<img src="img/gallery/syllaBliss0.jpg" width="830" height="288" alt="syllaBliss" />
         	<img src="img/gallery/syllaBliss1.jpg" width="830" height="288" alt="syllaBliss" />
         </div>
@@ -100,10 +68,12 @@
         <div class="grid three-twelfths">
         	<a href="http://www.hexaware.com/brandresourcecenter/" target="_blank"><img class="thumb" src="img/gallery/hexaware0t.jpg" alt="Brand Resource Center" title="Brand Resource Center" /></a>
         </div>
+
+        -->
         
     </div><!-- /portfolio -->
 
-    <div class=""><!-- opens footer -->
+    <div class="" id="footer_container"><!-- opens footer -->
         <div class="grid one-whole"><!-- opens downloads -->
         	<ul class="nav nav--block nav--stacked">
             	<li><a class="btn btn--full" href="http://validator.w3.org/check?uri=http%3A%2F%2Fdombonanni.com%2F;verbose=1" title="Feelin' Lucky?">Validate HTML</a></li>
@@ -115,17 +85,44 @@
     </div><!-- closes footer -->
 </body><!-- closes wrapper -->
 
+
+<!-- TEMPLATES -->
+<script type="text/template" id="portfolio_item_template">
+    <h2 class="beta">Title: <%= item_title %></h2>
+    <p class="description">Description: <%= item_description %></p>
+</script>
+
+<script type="text/javascript" src="js/libs/jquery-1.9.0.min.js"></script>
+<script type="text/javascript" src="js/libs/underscore-min.js"></script>
+<script type="text/javascript" src="js/libs/backbone-min.js"></script>
+
+<script type="text/javascript" src="js/libs/be.js"></script>
+<script type="text/javascript" src="js/libs/be/users/projects.js"></script>
+<script type="text/javascript" src="js/libs/be/users/wips.js"></script>
+<script type="text/javascript" src="js/libs/be/users/collections.js"></script>
+<script type="text/javascript" src="js/libs/be/users.js"></script>
+<script type="text/javascript" src="js/libs/be/collections.js"></script>
+<script type="text/javascript" src="js/libs/be/projects/comments.js"></script>
+<script type="text/javascript" src="js/libs/be/projects.js"></script>
+<script type="text/javascript" src="js/libs/be/wips/revisions.js"></script>
+<script type="text/javascript" src="js/libs/be/wips.js"></script>
+<script type="text/javascript" src="js/libs/be/search.js"></script>
+
+<script type="text/javascript" src="dombonanni.js"></script>
+
 <script type="text/javascript">
 
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-17167172-5']);
-  _gaq.push(['_trackPageview']);
+    console.log( "THIS FUCKIN THING: ", app );
 
-  (function() {
-	var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-	ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-17167172-5']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    	ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
 
 </script>
 

@@ -8,19 +8,21 @@ var app = app || {};
 
 // Users
 app.BehanceUser = new Behance.UserModel({user: 'dombonanni'});
+
 app.BehanceUser.fetch({
 	success:function(){
-		console.log('WOOF: FETCH SUCCESS')
+		console.log('WOOF: FETCH SUCCESS');
 		console.log( app.BehanceUser.attributes.user );
-		console.log( app.BehanceUser.attributes.id );
+		console.log( app.BehanceUser.attributes.projects.length );
 		console.log( app.BehanceUser.attributes.first_name );
 		console.log( app.BehanceUser.attributes.last_name );
 	},
 	error:function(){
-		console.log('BARK: FETCH FAIL')
+		console.log('BARK: FETCH FAIL');
 	}
 });
-app.BehanceUser.getProjects();
+
+ app.BehanceUser.getProjects();
 // app.BehanceUser.getCollections();
 // app.BehanceUser.getWips();
 // setTimeout(function () {
@@ -33,8 +35,17 @@ app.BehanceUser.getProjects();
 
 
 // // Projects
-app.BehanceProject = new Behance.ProjectModel({id: 5741605});
-app.BehanceProject.fetch();
+
+//for (var poop=0; poop < app.BehanceUser.attributes.projects.length; poop++) {
+
+	app.BehanceProject = new Behance.ProjectModel({id: 5741605});
+	app.BehanceProject.fetch({
+		success:function(){
+			var appView = new AppView();
+		}
+	});
+
+//};
 // app.BehanceProject.getComments();
 //
 // setTimeout(function () {
@@ -61,3 +72,21 @@ app.BehanceProject.fetch();
 // app.BehanceCollection = new Behance.CollectionModel({id: 9866});
 // app.BehanceCollection.fetch();
 // app.BehanceCollection.getProjects();
+
+var AppView = Backbone.View.extend({
+    el: $('#portfolio_container'),
+
+    template: _.template( $('#portfolio_item_template').html()),
+
+    initialize: function (){
+        this.render();
+    },
+
+    render: function (){
+        this.$el.html(this.template({
+        	item_title: app.BehanceUser.attributes.projects.length,
+        	item_description: app.BehanceProject.attributes.description
+        }));
+    }
+})
+
