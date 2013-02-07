@@ -23,16 +23,7 @@
         
     </div>
         
-    <div class="grid" id="nav_container">
-        <ul class="nav nav--stacked">
-            <li><a class="btn btn--lrg" href="#" title="Home">About</a></li>
-            <li><a class="btn btn--lrg" href="#" title="Portfolio">Portfolio</a></li>
-            <li><a class="btn btn--lrg" href="https://wordpress.philau.edu/designexpoportfolios/wp-content/uploads/2012/03/DomsResume3.20.12-1.pdf" title="Resume">Résumé</a></li>
-            <li><a class="btn btn--lrg" href="http://www.behance.net/dombonanni" target="_blank">Behance</a></li>
-            <li><a class="btn btn--lrg" href="https://plus.google.com/u/0/107827796879005657319/posts" target="_blank">Google+</a></li>
-            <li><a class="btn btn--lrg" href="http://www.linkedin.com/profile/view?id=117889189" target="_blank">LinkedIn</a></li>
-        </ul>
-    
+    <div class="grid" id="nav_container">    
     </div>
     
     <div class="" id="portfolio_container"><!-- opens portfolio -->
@@ -87,9 +78,29 @@
 
 
 <!-- TEMPLATES -->
+
+<script type="text/template" id="nav_template">
+    <ul class="nav nav--stacked" id="nav_item_container">
+        <li><a class="btn btn--lrg" href="#" title="Home">About</a></li>
+        <li><a class="btn btn--lrg" href="#" title="Portfolio">Portfolio</a></li>
+        <li><a class="btn btn--lrg" href="https://wordpress.philau.edu/designexpoportfolios/wp-content/uploads/2012/03/DomsResume3.20.12-1.pdf" title="Resume">Résumé</a></li>
+        <li><a class="btn btn--lrg" href="http://www.behance.net/dombonanni" target="_blank">Behance</a></li>
+        <li><a class="btn btn--lrg" href="https://plus.google.com/u/0/107827796879005657319/posts" target="_blank">Google+</a></li>
+        <li><a class="btn btn--lrg" href="http://www.linkedin.com/profile/view?id=117889189" target="_blank">LinkedIn</a></li>
+    </ul>
+
+</script>
+
+<script type="text/template" id="nav_item_template">
+    
+</script>
+
 <script type="text/template" id="portfolio_item_template">
-    <h2 class="beta">Title: <%= item_title %></h2>
-    <p class="description">Description: <%= item_description %></p>
+    <div class="grid nine-twelfths">    
+        <h2 class="beta">Title: <%= item_title %></h2>
+        <p class="description">Description: <%= item_description %></p>
+    </div>
+
 </script>
 
 <script type="text/javascript" src="js/libs/jquery-1.9.0.min.js"></script>
@@ -111,8 +122,6 @@
 <script type="text/javascript" src="dombonanni.js"></script>
 
 <script type="text/javascript">
-
-    console.log( "THIS FUCKIN THING: ", app );
 
     var _gaq = _gaq || [];
     _gaq.push(['_setAccount', 'UA-17167172-5']);
