@@ -12,17 +12,20 @@ app.BehanceUser = new Behance.UserModel({user: 'dombonanni'});
 app.BehanceUser.fetch({
 	success:function(){
 		console.log('WOOF: FETCH SUCCESS');
+		app.BehanceUser.getProjects();
 		console.log( app.BehanceUser.attributes.user );
-		console.log( app.BehanceUser.attributes.projects.length );
+		//console.log( app.BehanceUser.attributes.projects.length );
 		console.log( app.BehanceUser.attributes.first_name );
 		console.log( app.BehanceUser.attributes.last_name );
+		//var appView = new AppView();
+		console.log( app );
 	},
 	error:function(){
 		console.log('BARK: FETCH FAIL');
 	}
 });
 
- app.BehanceUser.getProjects();
+// app.BehanceUser.getProjects();
 // app.BehanceUser.getCollections();
 // app.BehanceUser.getWips();
 // setTimeout(function () {
@@ -36,7 +39,9 @@ app.BehanceUser.fetch({
 
 // // Projects
 
-//for (var poop=0; poop < app.BehanceUser.attributes.projects.length; poop++) {
+/*
+
+for (var poop=0; poop < app.BehanceUser.attributes.projects.length; poop++) {
 
 	app.BehanceProject = new Behance.ProjectModel({id: 5741605});
 	app.BehanceProject.fetch({
@@ -45,7 +50,8 @@ app.BehanceUser.fetch({
 		}
 	});
 
-//};
+}; */
+
 // app.BehanceProject.getComments();
 //
 // setTimeout(function () {
@@ -81,12 +87,13 @@ var AppView = Backbone.View.extend({
     initialize: function (){
         this.render();
     },
-
     render: function (){
         this.$el.html(this.template({
-        	item_title: app.BehanceProject.attributes.name,
-        	item_description: app.BehanceProject.attributes.description
+        	item_title: app.BehanceUser.attributes.projects.models[0].attributes.name,
+        	item_description: app.BehanceUser.attributes.projects.models[0].attributes.id
         }));
+
+        console.log(app.BehanceUser.attributes.projects.models);
     }
 })
 

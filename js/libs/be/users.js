@@ -25,7 +25,11 @@ Behance.UserModel = Behance.Model.extend({
     
     var projects = new Behance.ProjectsCollection();
     projects.user = this.get('user');
-    projects.fetch();
+    projects.fetch({
+      success:function(){
+        var appView = new AppView();
+      }
+    });
     this.set('projects', projects);
     
     return this;
