@@ -1,7 +1,10 @@
+##Project Specific Ignores
+_src/
+.sass-cache/
+
 #################
 ## Eclipse
 #################
-.sass-cache/
 *.pydevproject
 .project
 .metadata
