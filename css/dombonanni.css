@@ -1,1 +1,45 @@
 /* PRE-SASS WORKING CSS Document */
+
+a:hover, a:active, a:focus, a:visited {
+	text-decoration: none;
+}
+
+.btn{
+
+	/* --- TRANSITIONS, BOOM --- */
+
+	transition: all 0.05s ease-in-out;
+	-moz-transition: all 0.05s ease-in-out;
+	-o-transition: all 0.05s ease-in-out;
+	-webkit-transition: all 0.05s ease-in-out;
+
+    /* --- to be safe, we'll set the border right on all buttons to the same color as their button's background --- */
+	
+	border-right: 6px solid #d3d3d3;
+}
+	.btn:hover{ border-right-color: #ededed; border-right-width: 8px;}
+	.btn:active{ background-color: #828282;	border-right-color: #828282; border-right-width: 8px;}
+
+.btn--lrg {
+
+}
+
+/* --- Add classes for border color changes --- */
+
+.category-1 {
+	border-right-color: #618c34;
+}
+	.category-1:hover{ border-right-color: #9BC16F;	}
+	.category-1:active{ border-right-color: #3C5420; }
+
+.category-2 {
+	border-right-color: #e2af3b;
+}
+	.category-2:hover{ border-right-color: #F9D07D;	}
+	.category-2:active{ border-right-color: #967229; }
+
+.category-3 {
+	border-right-color: #B73913;
+}
+	.category-3:hover{ border-right-color: #E57A61; }
+	.category-3:active{ border-right-color: #7C230E; }
