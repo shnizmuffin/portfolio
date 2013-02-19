@@ -38,6 +38,13 @@ li{
 	//font-size:2em;
 }
 
+a{
+	&:hover{}
+	&:active{}
+	&:focus{}
+	&:visited{}
+}
+
 .header{
 	width: auto;
 	float: left;
@@ -57,8 +64,19 @@ li{
 	background-color: $domb-color-light-grey;
 	margin-bottom: 10px;
 	padding-left: 40px;
+
+	border-right: 6px solid $domb-color-light-grey;
+
+	@include vendor(transition, all 0.05s ease-in-out;);
 	
-	&:hover { text-decoration:underline; }
+	&:hover {
+		border-right-color: $domb-color-light-grey-h;
+		border-right-width: 8px;
+	}
+	&:active { 
+		background-color: $domb-color-light-grey-s;
+		border-right-color: $domb-color-light-grey-s;
+	}
 }
 
 .btn--lrg{
