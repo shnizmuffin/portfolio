@@ -13,10 +13,10 @@ app.BehanceUser.fetch({
 	success:function(){
 		console.log('WOOF: FETCH SUCCESS');
 		app.BehanceUser.getProjects();
-		console.log( app.BehanceUser.attributes.user );
+		//console.log( app.BehanceUser.attributes.user );
 		//console.log( app.BehanceUser.attributes.projects.length );
-		console.log( app.BehanceUser.attributes.first_name );
-		console.log( app.BehanceUser.attributes.last_name );
+		//console.log( app.BehanceUser.attributes.first_name );
+		//console.log( app.BehanceUser.attributes.last_name );
 		//var appView = new AppView();
 		console.log( app );
 	},
@@ -41,7 +41,7 @@ app.BehanceUser.fetch({
 
 /*
 
-for (var poop=0; poop < app.BehanceUser.attributes.projects.length; poop++) {
+for (var i=0; i < app.BehanceUser.attributes.projects.length; i++) {
 
 	app.BehanceProject = new Behance.ProjectModel({id: 5741605});
 	app.BehanceProject.fetch({
@@ -88,12 +88,11 @@ var AppView = Backbone.View.extend({
         this.render();
     },
     render: function (){
-        this.$el.html(this.template({
-        	item_title: app.BehanceUser.attributes.projects.models[0].attributes.name,
-        	item_description: app.BehanceUser.attributes.projects.models[0].attributes.id
-        }));
-
-        console.log(app.BehanceUser.attributes.projects.models);
-    }
+    
+		this.$el.html(this.template({
+    		item_title: app.BehanceUser.attributes.projects.models[0].attributes.name,
+    		item_description: app.BehanceUser.attributes.projects.models[0].attributes.id
+    	}));
+	}
 })
 
