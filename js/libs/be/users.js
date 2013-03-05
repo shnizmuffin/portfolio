@@ -27,7 +27,7 @@ Behance.UserModel = Behance.Model.extend({
     projects.user = this.get('user');
     projects.fetch({
       success:function(){
-        var appView = new AppView();
+        var app_view = new AppView({el: $('#portfolio_container') });
       }
     });
     this.set('projects', projects);

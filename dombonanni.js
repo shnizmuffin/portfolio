@@ -80,19 +80,20 @@ for (var i=0; i < app.BehanceUser.attributes.projects.length; i++) {
 // app.BehanceCollection.getProjects();
 
 var AppView = Backbone.View.extend({
-    el: $('#portfolio_container'),
-
-    template: _.template( $('#portfolio_item_template').html()),
 
     initialize: function (){
         this.render();
     },
     render: function (){
-    
-		this.$el.html(this.template({
+    	
+    	var variables = {
     		item_title: app.BehanceUser.attributes.projects.models[0].attributes.name,
     		item_description: app.BehanceUser.attributes.projects.models[0].attributes.id
-    	}));
-	}
-})
+    	};
 
+		var template = _.template( $("#portfolio_item_template").html(), variables );
+
+		this.$el.html( template );
+    	
+    }
+});
