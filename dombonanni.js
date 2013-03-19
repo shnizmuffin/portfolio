@@ -16,7 +16,7 @@ app.BehanceUser.fetch({
 		//console.log( app.BehanceUser.attributes.user );
 		//console.log( app.BehanceUser.attributes.projects.length );
 		//console.log( app.BehanceUser.attributes.first_name );
-		//console.log( app.BehanceUser.attributes.last_name );
+		
 		//var appView = new AppView();
 		console.log( app );
 	},
@@ -79,7 +79,72 @@ for (var i=0; i < app.BehanceUser.attributes.projects.length; i++) {
 // app.BehanceCollection.fetch();
 // app.BehanceCollection.getProjects();
 
+var NavItem = Backbone.Model.extend({
+	defaults: {
+		item_category: 'Web Design',
+		item_title: 'Untitled Project'
+	}
+});
+
+var NavList = Backbone.Collection.extend({
+	model: NavItem
+});
+
+var NavItemView = Backbone.View.extend({
+	el: $('#nav_item_container'),
+
+	initialize: function(){
+	},
+
+	render: function(){
+		var template = _.template( $("#nav_item_template").html());
+		this.$el.html( template );
+	}
+});
+
+var NavView = Backbone.View.extend({
+
+	el: $('#nav_container'),
+
+	events: {
+		'click .btn': 'loadPortfolioItem'
+	},
+
+	initialize: function(){
+		_.bindAll(this, 'render', 'loadPortfolioItem');
+
+		this.collection = app.BehanceUser.attributes.projects;
+
+		this.render();
+	},
+
+	render: function(){
+		
+		_(this.collection.models).each(function(item){
+
+			var variables = {
+			item_title: item.get('name'),
+			item_category: 'butts'
+			}
+
+			var template = _.template( $("#nav_item_template").html(), variables );
+			this.$el.append( template );
+
+		}, this)
+
+	},
+
+	loadPortfolioItem: function(){
+		console.log('LOADING.')
+	}
+
+
+
+});
+
 var AppView = Backbone.View.extend({
+
+	el: $('#portfolio_container'),
 
     initialize: function (){
         this.render();
@@ -88,11 +153,11 @@ var AppView = Backbone.View.extend({
     	
     	var variables = {
     		item_title: app.BehanceUser.attributes.projects.models[0].attributes.name,
-    		item_description: app.BehanceUser.attributes.projects.models[0].attributes.id
+    		item_description: app.BehanceUser.attributes.projects.models[0].attributes.id,
+    		item_cover: app.BehanceUser.attributes.projects.models[0].attributes.covers[404]
     	};
 
 		var template = _.template( $("#portfolio_item_template").html(), variables );
-
 		this.$el.html( template );
     	
     }
