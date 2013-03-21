@@ -1,5 +1,12 @@
 /* PRE-SASS WORKING CSS Document */
 
+/* DEBUG ONLY */
+.grid{
+	border:1px solid blue;
+}
+
+/* END DEBUG */
+
 a:hover, a:active, a:focus, a:visited {
 	text-decoration: none;
 }
@@ -43,3 +50,22 @@ a:hover, a:active, a:focus, a:visited {
 }
 	.category-3:hover{ border-right-color: #E57A61; }
 	.category-3:active{ border-right-color: #7C230E; }
+
+.card {
+	max-width:550px;
+	background: #d3d3d3; /* $domb-color-light-grey */
+}
+	.card img{
+		width:100%;
+	}
+
+.title {
+	width:100%;
+	margin-bottom: 0;
+	padding:0.5em;
+	padding-left: 40px;
+	line-height: 1;
+	font-size: 2rem;
+	background-color: #e2af3b; /* $domb-color-light-grey-s */
+	border-bottom:2px solid #967229;
+}

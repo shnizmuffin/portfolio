@@ -83,7 +83,7 @@ var NavList = Backbone.Collection.extend({
 });
 
 var NavItemView = Backbone.View.extend({
-	el: $('#nav_item_container'),
+	//el: $('#nav_item_container'),
 	tagName: 'li',
 	events: {
 		'click .btn': 'loadPortfolioItem'
@@ -101,7 +101,7 @@ var NavItemView = Backbone.View.extend({
 
 		var template = _.template( $("#nav_item_template").html(), variables);
 
-		this.$el.append( template );
+		$(this.el).html( template );
 
 		return this;
 	},
@@ -137,12 +137,13 @@ var NavView = Backbone.View.extend({
 		console.log('rendering a NavView');
 
 		var template = _.template( $("#nav_template").html());
-		this.$el.html( template );
+		this.$el.append( template );
 
 		_(this.collection.models).each(function(item){
 			
 			console.log('Appending item');
 			self.appendItem(item);
+			
 			},
 
 			this);
@@ -164,7 +165,8 @@ var NavView = Backbone.View.extend({
 				item_category: 'undefined-category'
 				};
 
-		this.$el.append(navItemView.render(variables));
+		$('ul', this.el).append(navItemView.render(variables).el);
+		//this.$el.append('<h1 class="alpha">BUTTSLOL</h1>' + );
 
 	}
 
@@ -181,7 +183,7 @@ var AppView = Backbone.View.extend({
     	
     	var variables = {
     		item_title: app.BehanceUser.attributes.projects.models[0].attributes.name,
-    		item_id: 4,
+    		item_id: app.BehanceUser.attributes.projects.models[0].attributes.id,
     		item_cover: app.BehanceUser.attributes.projects.models[0].attributes.covers[404]
     	};
 
