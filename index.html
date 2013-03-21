@@ -89,13 +89,12 @@
 
 <script type="text/template" id="nav_template">
     <ul class="nav nav--stacked" id="nav_item_container">
-        <li>Butts</li>
     </ul>
 
 </script>
 
 <script type="text/template" id="nav_item_template">
-        <li><a class="btn btn--lrg <%= item_category %>" href="#" title="<%= item_title %>"><%= item_title %></a></li>
+        <li><a class="btn btn--lrg <%= item_category %>" href="#<%= item_id %>" title="<%= item_title %>"><%= item_title %></a></li>
     
 </script>
 
@@ -103,7 +102,7 @@
     <div class="grid nine-twelfths">    
         <h2 class="beta">Title: <%= item_title %></h2>
         <img src="<%= item_cover %>" />
-        <p class="description">Description: <%= item_description %></p>
+        <p class="description">Description: <%= item_id %></p>
     </div>
 
 </script>

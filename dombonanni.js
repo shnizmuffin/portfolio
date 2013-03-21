@@ -16,9 +16,8 @@ app.BehanceUser.fetch({
 		//console.log( app.BehanceUser.attributes.user );
 		//console.log( app.BehanceUser.attributes.projects.length );
 		//console.log( app.BehanceUser.attributes.first_name );
-		
-		//var appView = new AppView();
 		console.log( app );
+		
 	},
 	error:function(){
 		console.log('BARK: FETCH FAIL');
@@ -39,18 +38,17 @@ app.BehanceUser.fetch({
 
 // // Projects
 
-/*
+// app.BehanceProject = new Behance.ProjectModel({id: 5741605});
+// app.BehanceProject.fetch({
+// 	success:function(){
+// 		var appView = new AppView();
+// 	},
 
-for (var i=0; i < app.BehanceUser.attributes.projects.length; i++) {
+// 	error:function(){
+// 		console.log('BARK: Project Fetch Fail')
+// 	}
 
-	app.BehanceProject = new Behance.ProjectModel({id: 5741605});
-	app.BehanceProject.fetch({
-		success:function(){
-			var appView = new AppView();
-		}
-	});
-
-}; */
+// };
 
 // app.BehanceProject.getComments();
 //
@@ -79,26 +77,39 @@ for (var i=0; i < app.BehanceUser.attributes.projects.length; i++) {
 // app.BehanceCollection.fetch();
 // app.BehanceCollection.getProjects();
 
-var NavItem = Backbone.Model.extend({
-	defaults: {
-		item_category: 'Web Design',
-		item_title: 'Untitled Project'
-	}
-});
 
 var NavList = Backbone.Collection.extend({
-	model: NavItem
+	model: app.BehanceUser
 });
 
 var NavItemView = Backbone.View.extend({
 	el: $('#nav_item_container'),
-
-	initialize: function(){
+	tagName: 'li',
+	events: {
+		'click .btn': 'loadPortfolioItem'
 	},
 
-	render: function(){
-		var template = _.template( $("#nav_item_template").html());
-		this.$el.html( template );
+	initialize: function(){
+		_.bindAll(this, 'render', 'loadPortfolioItem');
+	},
+
+	render: function(info){
+		var variables = info;
+
+		console.log('rendering a NavItemView');
+		console.log(variables);
+
+		var template = _.template( $("#nav_item_template").html(), variables);
+
+		this.$el.append( template );
+
+		return this;
+	},
+
+	loadPortfolioItem: function(){
+		console.log('LOADING.');
+		app_view = new AppView();
+		console.log(app_view);
 	}
 });
 
@@ -106,39 +117,56 @@ var NavView = Backbone.View.extend({
 
 	el: $('#nav_container'),
 
-	events: {
-		'click .btn': 'loadPortfolioItem'
-	},
-
 	initialize: function(){
-		_.bindAll(this, 'render', 'loadPortfolioItem');
+		
+		_.bindAll(this, 'render', 'appendItem');
 
 		this.collection = app.BehanceUser.attributes.projects;
+		//this.collection.bind('add', this.appendItem);
+		//console.log(this);
+		//console.log(this.collection);
+		//console.log(this.collection.models);
 
 		this.render();
 	},
 
 	render: function(){
 		
+		var self = this;
+
+		console.log('rendering a NavView');
+
+		var template = _.template( $("#nav_template").html());
+		this.$el.html( template );
+
 		_(this.collection.models).each(function(item){
+			
+			console.log('Appending item');
+			self.appendItem(item);
+			},
 
-			var variables = {
-			item_title: item.get('name'),
-			item_category: 'butts'
-			}
-
-			var template = _.template( $("#nav_item_template").html(), variables );
-			this.$el.append( template );
-
-		}, this)
+			this);
 
 	},
 
-	loadPortfolioItem: function(){
-		console.log('LOADING.')
+	appendItem:function(item){
+
+		var navItemView = new NavItemView({
+			model: item
+		});
+
+		console.log('appendItem');
+		
+		var variables = {
+				item_cover: item.get('covers'),
+				item_id: item.get('id'),
+				item_title: item.get('name'),
+				item_category: 'undefined-category'
+				};
+
+		this.$el.append(navItemView.render(variables));
+
 	}
-
-
 
 });
 
@@ -153,7 +181,7 @@ var AppView = Backbone.View.extend({
     	
     	var variables = {
     		item_title: app.BehanceUser.attributes.projects.models[0].attributes.name,
-    		item_description: app.BehanceUser.attributes.projects.models[0].attributes.id,
+    		item_id: 4,
     		item_cover: app.BehanceUser.attributes.projects.models[0].attributes.covers[404]
     	};
 
