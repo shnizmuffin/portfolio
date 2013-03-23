@@ -150,9 +150,11 @@ input[type=submit][value]{
 /**
  * You should avoid using IDs for CSS, is this doing any styling?
  */
+
 [id]{
 	outline:5px solid yellow;
 }
+
 
 
 /**

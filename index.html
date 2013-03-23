@@ -1,17 +1,12 @@
 <!doctype html>
-<html lang="en" class="">
+<html lang="en">
 
 <head>
 	<meta charset="utf-8" />
 	<title>Dom Bonanni</title>
-
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	
-    <!--link href='http://fonts.googleapis.com/css?family=Wire+One' rel='stylesheet' type='text/css'-->
-
 	<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" />
-    <link rel="stylesheet" href="css/dombonanni.css" type="text/css" media="screen" />
-    
+    <!--<link rel="stylesheet" href="css/dombonanni.css" type="text/css" media="screen" />-->
 </head>
 
 
@@ -24,53 +19,16 @@
     </div>
         
     <div class="grid one-third" id="nav_container">
-<!--         BLARF  -->
-    </div>
-
-    <div class="grid two-thirds" id="portfolio_container"><!-- opens portfolio -->
-		<!--
-
-        <div class="grid nine-twelfths">
-        	<img src="img/gallery/syllaBliss0.jpg" width="830" height="288" alt="syllaBliss" />
-        	<img src="img/gallery/syllaBliss1.jpg" width="830" height="288" alt="syllaBliss" />
-        </div>
-        
-        <div class="grid nine-twelfths">
-            <h2>syllaBliss</h2>
-            <p>This concept was designed as a mobile solution to Philadelphia University's difficult to use and poorly adopted Blackboard Academic Suite. The project featured extensive usability testing, task analysis, preproduction, and planning.</p>
-        </div>
-        
-        <div class="grid nine-twelfths">
-            <img src="img/gallery/fdredesign0.jpg" width="830" height="288" alt="Fashion Design Website Redesign" />
-            <img src="img/gallery/fdredesign1.jpg" width="830" height="288" alt="Fashion Design Website Redesign" />
-            <img src="img/gallery/fdredesign2.jpg" width="830" height="288" alt="Fashion Design Website Redesign" />
-        </div>
-        
-        <div class="grid nine-twelfths">
-            <h2>PhilaU Fashion Design Website Redesign</h2>
-            <p>This concept was planned and designed in collaboration with Philadelphia University's Fashion Design Program and Office of Public Relations. The project featured extensive planning, task analysis, market research, and a sizeable interview process.</p>
-        </div>
-        
-        <div class="grid nine-twelfths">
-        	<a href="http://www.hexaware.com/brandresourcecenter/" target="_blank"><img class="img" src="img/gallery/hexaware0.jpg" title="Brand Resource Center" alt="Brand Resource Center" /></a>
-            <h2><a href="http://www.hexaware.com/brandresourcecenter/" target="_blank">Brand Resource Center</a></h2>
-            <p>Developed at Hexaware Technologies with the Global Marketing Team, the Brand Resource Center acts as an online style guide serving over 5,000 employees internationally. The development process considered database and content management, cross-browser compatibility (including IE6), and standards compliance.</p>
-        </div>
-        
-        <div class="grid three-twelfths">
-        	<a href="http://www.hexaware.com/brandresourcecenter/" target="_blank"><img class="thumb" src="img/gallery/hexaware0t.jpg" alt="Brand Resource Center" title="Brand Resource Center" /></a>
-        </div>
-
-        -->
-        
+    </div><!-- /nav_container -->
+    <div class="grid two-thirds" id="portfolio_container">        
     </div><!-- /portfolio -->
 
     <div class="" id="footer_container"><!-- opens footer -->
         <div class="grid one-whole"><!-- opens downloads -->
         	<ul class="nav nav--block nav--stacked">
-            	<li><a class="btn" href="https://docs.google.com/document/d/1PmlP1BVyldlubL39JjaqwauiCyKsYbRkN0Dryl_CGAE/pub" >Résumé</a></li>
-                <li><a class="btn" href="http://validator.w3.org/check?uri=http%3A%2F%2Fdombonanni.com%2F;verbose=1" >Validate HTML</a></li>
-            	<li><a class="btn" href="#" >Back to Top</a></li>
+            	<li><a class="btn" href="https://docs.google.com/document/d/1PmlP1BVyldlubL39JjaqwauiCyKsYbRkN0Dryl_CGAE/pub" title="Résumé" >Résumé</a></li>
+                <li><a class="btn" href="http://validator.w3.org/check?uri=http%3A%2F%2Fdombonanni.com%2F;verbose=1" title="Code that mom would be proud of, if mom knew what code was." >Validate HTML</a></li>
+            	<li><a class="btn" href="#" title="Woosh!">Back to Top</a></li>
         	</ul>
         </div><!-- closes downloads -->
         
@@ -87,12 +45,12 @@
 </script>
 
 <script type="text/template" id="nav_item_template">
-        <li><a class="btn btn--lrg <%= item_category %>" href="#<%= item_id %>" title="<%= item_title %>"><%= item_title %></a></li>
-    
+        <a class="btn btn--lrg <%= item_category %>" href="#<%= item_id %>" title="<%= item_title %>"><%= item_title %></a>
+
 </script>
 
-<script type="text/template" id="portfolio_item_template">
-    <div class="card">    
+<script type="text/template" id="portfolio_template">
+    <div class="card <%= item_category %>">    
         <h2 class="beta title"><%= item_title %></h2>
         <img src="<%= item_cover %>" />
         <p class="description">Description: <%= item_id %></p>

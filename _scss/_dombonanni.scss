@@ -1,6 +1,6 @@
 /* Theme */
 
-@import url(http://fonts.googleapis.com/css?family=Wire+One);
+@import url("http://fonts.googleapis.com/css?family=Wire+One");
 
 html{
 	/*background:url(../img/bg.png) repeat;*/
@@ -65,9 +65,9 @@ a{
 	margin-bottom: 10px;
 	padding-left: 40px;
 
-	border-right: 6px solid $domb-color-light-grey;
+	border-right: $domb-border-size solid $domb-color-light-grey;
 
-	@include vendor(transition, all 0.05s ease-in-out;);
+	@include vendor(transition, all 0.05s ease-in-out);
 	
 	&:hover {
 		border-right-color: $domb-color-light-grey-h;
@@ -80,5 +80,54 @@ a{
 }
 
 .btn--lrg{
-	font-size: 2rem; /* DBONANNI - overrides Inuit completely */
+	font-size: 2rem; /* overrides Inuit completely */
+}
+
+.card {
+	max-width:550px;
+	background: $domb-color-light-grey; /* $domb-color-light-grey */
+	
+	img { width:100%; }
+
+	.title {
+		width:100%;
+		margin-bottom: 0;
+		padding:0.5em;
+		padding-left: 40px;
+		line-height: 1;
+		font-size: 2rem;
+		background-color: $domb-color-paradiso;
+		border-bottom:$domb-border-size solid $domb-color-paradiso-h;
+	}
+
+}
+
+
+
+.category-1, .interaction-design, .ui-ux, .web-design {
+	border-right-color: $domb-color-wasabi;
+
+	&:hover{border-right-color: $domb-color-wasabi-h}
+	&:active{border-right-color: $domb-color-wasabi-s}
+}
+
+.category-2, .web-development, .programming {
+	border-right-color: $domb-color-tulip-tree;
+
+	&:hover{border-right-color: $domb-color-tulip-tree-h}
+	&:active{border-right-color: $domb-color-tulip-tree-s}
+}
+
+.category-3, .computer-animation, .sound-design, .visual-effects, .character-design {
+	border-right-color: $domb-color-rust;
+
+	&:hover{border-right-color: $domb-color-rust-h}
+	&:active{border-right-color: $domb-color-rust-s}
+}
+
+.category-4, .branding, .typography {
+	border-right-color: $domb-color-paradiso;
+
+	&:hover{border-right-color: $domb-color-paradiso-h}
+	&:active{border-right-color: $domb-color-paradiso-s}
 }

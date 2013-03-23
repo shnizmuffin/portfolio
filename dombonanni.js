@@ -96,11 +96,14 @@ var NavItemView = Backbone.View.extend({
 	render: function(info){
 		var variables = info;
 
-		console.log('rendering a NavItemView');
-		console.log(variables);
+		//console.log('rendering a NavItemView');
+
+		//we're just jamming in the categories as css classes, so lets make them look like classes.
+		variables.item_category = variables.item_category.toString().toLowerCase().replace(/[ /]/g, '-').replace(/,/g, ' ');
+
+		console.log(variables.item_category);
 
 		var template = _.template( $("#nav_item_template").html(), variables);
-
 		$(this.el).html( template );
 
 		return this;
@@ -122,11 +125,6 @@ var NavView = Backbone.View.extend({
 		_.bindAll(this, 'render', 'appendItem');
 
 		this.collection = app.BehanceUser.attributes.projects;
-		//this.collection.bind('add', this.appendItem);
-		//console.log(this);
-		//console.log(this.collection);
-		//console.log(this.collection.models);
-
 		this.render();
 	},
 
@@ -159,13 +157,13 @@ var NavView = Backbone.View.extend({
 		console.log('appendItem');
 		
 		var variables = {
-				item_cover: item.get('covers'),
+				item_cover: item.get('covers')[404],
 				item_id: item.get('id'),
 				item_title: item.get('name'),
-				item_category: 'undefined-category'
+				item_category: item.get('fields')
 				};
 
-		$('ul', this.el).append(navItemView.render(variables).el);
+		$('#nav_item_container', this.el).append(navItemView.render(variables).el);
 		//this.$el.append('<h1 class="alpha">BUTTSLOL</h1>' + );
 
 	}
@@ -182,12 +180,13 @@ var AppView = Backbone.View.extend({
     render: function (){
     	
     	var variables = {
-    		item_title: app.BehanceUser.attributes.projects.models[0].attributes.name,
-    		item_id: app.BehanceUser.attributes.projects.models[0].attributes.id,
-    		item_cover: app.BehanceUser.attributes.projects.models[0].attributes.covers[404]
+    		item_title: app.BehanceUser.attributes.projects.models[0].get('name'),
+    		item_id: app.BehanceUser.attributes.projects.models[0].get('id'),
+    		item_cover: app.BehanceUser.attributes.projects.models[0].get('covers')[404],
+    		item_category: app.BehanceUser.attributes.projects.models[0].get('fields')
     	};
 
-		var template = _.template( $("#portfolio_item_template").html(), variables );
+		var template = _.template( $("#portfolio_template").html(), variables );
 		this.$el.html( template );
     	
     }

@@ -1,11 +1,7 @@
 /*------------------------------------*\
     INUIT.CSS
 \*------------------------------------*/
-/*!*
- * 
- * inuitcss.com -- @inuitcss -- @csswizardry
- * 
- */
+/*! inuitcss.com -- @inuitcss -- @csswizardry */
 /**
  * inuit.css acts as a base stylesheet which you should extend with your own
  * theme stylesheet.
@@ -184,7 +180,7 @@
    @import "objects/block-list";
    @import "objects/matrix";
    @import "objects/split";
-   @import "objects/this-or-this";
+   //@import "objects/this-or-this";
    @import "objects/link-complex";
    @import "objects/flyout";
    @import "objects/arrows";
@@ -194,7 +190,7 @@
    @import "objects/lozenges";
    @import "objects/rules";
    @import "objects/stats";
-   @import "objects/greybox";
+   //@import "objects/greybox";
    @import "objects/batch";
 
 
