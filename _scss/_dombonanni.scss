@@ -89,6 +89,8 @@ a{
 	
 	img { width:100%; }
 
+	p { }
+
 	.title {
 		width:100%;
 		margin-bottom: 0;
@@ -105,29 +107,29 @@ a{
 
 
 .category-1, .interaction-design, .ui-ux, .web-design {
-	border-right-color: $domb-color-wasabi;
+	border-color: $domb-color-wasabi;
 
-	&:hover{border-right-color: $domb-color-wasabi-h}
-	&:active{border-right-color: $domb-color-wasabi-s}
+	&:hover{border-color: $domb-color-wasabi-h}
+	&:active{border-color: $domb-color-wasabi-s}
 }
 
 .category-2, .web-development, .programming {
-	border-right-color: $domb-color-tulip-tree;
+	border-color: $domb-color-tulip-tree;
 
-	&:hover{border-right-color: $domb-color-tulip-tree-h}
-	&:active{border-right-color: $domb-color-tulip-tree-s}
+	&:hover{border-color: $domb-color-tulip-tree-h}
+	&:active{border-color: $domb-color-tulip-tree-s}
 }
 
 .category-3, .computer-animation, .sound-design, .visual-effects, .character-design {
-	border-right-color: $domb-color-rust;
+	border-color: $domb-color-rust;
 
-	&:hover{border-right-color: $domb-color-rust-h}
-	&:active{border-right-color: $domb-color-rust-s}
+	&:hover{border-color: $domb-color-rust-h}
+	&:active{border-color: $domb-color-rust-s}
 }
 
 .category-4, .branding, .typography {
-	border-right-color: $domb-color-paradiso;
+	border-color: $domb-color-paradiso;
 
-	&:hover{border-right-color: $domb-color-paradiso-h}
-	&:active{border-right-color: $domb-color-paradiso-s}
+	&:hover{border-color: $domb-color-paradiso-h}
+	&:active{border-color: $domb-color-paradiso-s}
 }

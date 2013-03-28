@@ -1,8 +1,13 @@
 /* PRE-SASS WORKING CSS Document */
 
 /* DEBUG ONLY */
-.grid{
-	border:1px solid blue;
+/* END DEBUG */
+
+.card p{
+	padding-left: 40px;
 }
 
-/* END DEBUG */
+.title{
+
+	border-color:inherit !important;
+}

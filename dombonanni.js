@@ -96,12 +96,12 @@ var NavItemView = Backbone.View.extend({
 	render: function(info){
 		var variables = info;
 
-		//console.log('rendering a NavItemView');
+		console.log('rendering a NavItemView : ', this);
 
 		//we're just jamming in the categories as css classes, so lets make them look like classes.
 		variables.item_category = variables.item_category.toString().toLowerCase().replace(/[ /]/g, '-').replace(/,/g, ' ');
 
-		console.log(variables.item_category);
+		//console.log(variables.item_category);
 
 		var template = _.template( $("#nav_item_template").html(), variables);
 		$(this.el).html( template );
@@ -110,9 +110,10 @@ var NavItemView = Backbone.View.extend({
 	},
 
 	loadPortfolioItem: function(){
-		console.log('LOADING.');
-		app_view = new AppView();
-		console.log(app_view);
+		var app_view = new AppView({
+			model: new Behance.ProjectModel({id: this.model.get('id')})
+		});
+		console.log(this.model.get('id'));
 	}
 });
 
@@ -138,8 +139,8 @@ var NavView = Backbone.View.extend({
 		this.$el.append( template );
 
 		_(this.collection.models).each(function(item){
-			
-			console.log('Appending item');
+		
+			//console.log(item);
 			self.appendItem(item);
 			
 			},
@@ -154,7 +155,7 @@ var NavView = Backbone.View.extend({
 			model: item
 		});
 
-		console.log('appendItem');
+		//console.log('appendItem');
 		
 		var variables = {
 				item_cover: item.get('covers')[404],
@@ -175,19 +176,59 @@ var AppView = Backbone.View.extend({
 	el: $('#portfolio_container'),
 
     initialize: function (){
-        this.render();
+        //console.log(this.model);
+
+        _.bindAll(this, 'render', 'appendModule');
+
+		var self = this;
+
+		this.model.fetch({
+			success:function(){
+		 		self.render();
+		 		console.log('WOOF: Project Fetch Success : ', self);
+		 	},
+
+		 	error:function(){
+		 		console.log('BARK: Project Fetch Fail')
+		 	}
+
+		});
     },
+
     render: function (){
     	
     	var variables = {
-    		item_title: app.BehanceUser.attributes.projects.models[0].get('name'),
-    		item_id: app.BehanceUser.attributes.projects.models[0].get('id'),
-    		item_cover: app.BehanceUser.attributes.projects.models[0].get('covers')[404],
-    		item_category: app.BehanceUser.attributes.projects.models[0].get('fields')
+    		item_description: this.model.get('description'),
+    		item_title: this.model.get('name'),
+    		item_id: this.model.get('id'),
+    		item_category: this.model.get('fields').toString().toLowerCase().replace(/[ /]/g, '-').replace(/,/g, ' ')
     	};
 
 		var template = _.template( $("#portfolio_template").html(), variables );
 		this.$el.html( template );
+
+		_(this.model.get('modules')).each(function(item){
+				
+				//console.log(item.type);
+
+				if(item.type == 'text'){
+				 	console.log('text');
+				}
+				else if(item.type == 'image'){
+				 	console.log('image');
+				}
+				else if(item.type == 'embed'){
+					console.log('embed');
+				}
+				else {
+				 	console.log('something else, apparently : '+item.type);
+				}
+			
+			});
+    },
+
+    appendModule:function(module){
+
     	
     }
 });

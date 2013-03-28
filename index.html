@@ -6,7 +6,7 @@
 	<title>Dom Bonanni</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" />
-    <!--<link rel="stylesheet" href="css/dombonanni.css" type="text/css" media="screen" />-->
+    <link rel="stylesheet" href="css/dombonanni.css" type="text/css" media="screen" />
 </head>
 
 
@@ -52,8 +52,7 @@
 <script type="text/template" id="portfolio_template">
     <div class="card <%= item_category %>">    
         <h2 class="beta title"><%= item_title %></h2>
-        <img src="<%= item_cover %>" />
-        <p class="description">Description: <%= item_id %></p>
+        <p class="description"><%= item_description %></p>
     </div>
 
 </script>
