@@ -6,34 +6,32 @@
 	<title>Dom Bonanni</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" />
-    <link rel="stylesheet" href="css/dombonanni.css" type="text/css" media="screen" />
+    <!--<link rel="stylesheet" href="css/dombonanni.css" type="text/css" media="screen" />-->
 </head>
 
 
 <body class="grid-wrapper"><!-- open wrapper -->
-    <div class="grid one-whole">
-    	<div class="header" id="title_container"><!-- open header -->
-        	<h1 id="title" class="giga">Dom Bonanni</h1>
-        </div><!-- closes header -->
+    <div class="grid one-whole" id="header_container"><!-- open header_container -->
+        <div id="header">    
+            <h1 class="giga">Dom Bonanni</h1>
+        </div>
+    </div><!-- /header_container -->
         
-    </div>
-        
-    <div class="grid one-third" id="nav_container">
+    <div class="grid one-quarter palm-one-whole" id="nav_container">
     </div><!-- /nav_container -->
-    <div class="grid two-thirds" id="portfolio_container">        
+
+    <div class="grid three-quarters palm-one-whole" id="portfolio_container">        
     </div><!-- /portfolio -->
 
-    <div class="" id="footer_container"><!-- opens footer -->
-        <div class="grid one-whole"><!-- opens downloads -->
-        	<ul class="nav nav--block nav--stacked">
-            	<li><a class="btn" href="https://docs.google.com/document/d/1PmlP1BVyldlubL39JjaqwauiCyKsYbRkN0Dryl_CGAE/pub" title="Résumé" >Résumé</a></li>
-                <li><a class="btn" href="http://validator.w3.org/check?uri=http%3A%2F%2Fdombonanni.com%2F;verbose=1" title="Code that mom would be proud of, if mom knew what code was." >Validate HTML</a></li>
-            	<li><a class="btn" href="#" title="Woosh!">Back to Top</a></li>
-        	</ul>
-        </div><!-- closes downloads -->
-        
-    </div><!-- closes footer -->
-</body><!-- closes wrapper -->
+    <div class="grid one-whole" id="footer_container"><!-- open footer -->
+    	<ul class="nav nav--block nav--stacked">
+        	<li><a class="btn" href="https://docs.google.com/document/d/1PmlP1BVyldlubL39JjaqwauiCyKsYbRkN0Dryl_CGAE/pub" title="Résumé" >Résumé</a></li>
+            <li><a class="btn" href="http://validator.w3.org/check?uri=http%3A%2F%2Fdombonanni.com%2F;verbose=1" title="Code that mom would be proud of, if mom knew what code was." >Validate HTML</a></li>
+        	<li><a class="btn" href="#" title="Woosh!">Back to Top</a></li>
+    	</ul>        
+    </div><!-- /footer -->
+
+</body><!-- /wrapper -->
 
 
 <!-- TEMPLATES -->
@@ -50,9 +48,30 @@
 </script>
 
 <script type="text/template" id="portfolio_template">
-    <div class="card <%= item_category %>">    
-        <h2 class="beta title"><%= item_title %></h2>
-        <p class="description"><%= item_description %></p>
+    <div id="<%= item_id %>" class="card <%= item_category %>">    
+        <h2 class="beta project-title"><%= item_title %></h2>
+    </div>
+
+</script>
+
+<script type="text/template" id="portfolio_text_template">
+    <div class="text">
+        <p><%= item_text %></p>
+    </div>
+
+</script>
+
+<script type="text/template" id="portfolio_image_template">
+    <div class="media">
+        <img class="img--center" src="<%= image_link %>" alt="<%= image_caption %>" title="<%= image_caption %>" />
+    </div>
+    <div class="caption"><%= image_caption %></div>
+
+</script>
+
+<script type="text/template" id="portfolio_embed_template">
+    <div class="media">
+        <%= item_code %>
     </div>
 
 </script>

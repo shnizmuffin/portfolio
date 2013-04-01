@@ -1,77 +1,133 @@
-/* Theme */
+/* Fonts */
 
-@import url("http://fonts.googleapis.com/css?family=Wire+One");
+@import url("http://fonts.googleapis.com/css?family=Wire+One|Roboto+Condensed:300");
+
+/* Mixins */
+
+@mixin colorize($color, $color-h, $color-s){
+    border-color: $color;
+
+	&:hover{border-color: $color-h}
+	&:active{border-color: $color-s}
+
+	.project-title{
+		border-bottom: $domb-border-size solid $color;
+		color: $color-s;
+		//background-color:  $color-s;
+
+	}
+
+	.text{
+		border-bottom:2px solid $color;
+	}
+
+	.media{
+		border-top:2px solid $color;
+		border-bottom:2px solid $color;
+	}
+}
+
+/* element styles */
 
 html{
-	/*background:url(../img/bg.png) repeat;*/
+	//background:url(../img/bg.png) repeat;
+	background-color: $domb-color-charcoal;
 }
 
 body {
-	-webkit-font-smoothing:antialiased;
+	-webkit-font-smoothing: antialiased;
 	font-family: $brand-face;
-	background-color: $domb-color-charcoal;
 	padding-top: 40px;
+	max-width: 1920px;
 }
 
-h1 {
-	font-weight:normal;
-}
+h1 {}
 
 h2 {
-	//font-size:3em;
-	font-weight:normal;
+	//font-family:'Roboto Condensed','Arial Narrow', arial, sans-serif;
+	//@include font-size($kilo-size);
+	font-weight:300;
 	//margin:0.5em 0 0 0.5em;
 }
 
 h3 {}
 
 p {
-	font-family:'Arial Narrow', sans-serif;
-	//padding:1em;
+	//font-family:'Arial Narrow', sans-serif;
+	padding:15px 40px;
 }
 
-ul{
-	//list-style:none;
-}
+ul{}
 
-li{
-	//font-size:2em;
-}
+li{}
 
 a{
-	&:hover{}
+	color:black;
+
+	&:hover{ color:$domb-color-charcoal; }
 	&:active{}
 	&:focus{}
-	&:visited{}
+	&:visited{ color:$domb-color-charcoal; }
 }
 
-.header{
-	width: auto;
-	float: left;
+/* id styles */
+
+#header_container{
+	//width: auto;
+	//float: left;
+	margin-bottom: $domb-border-size;
+
 }
 
-#title{
+#header{
+	
+	h1 {
+		font-family: "Wire One", $brand-face;
+		font-weight:300;
+		margin-bottom:0;
+
+		@include media-query(palm){
+			@include font-size($mega-size);
+			text-align: center;
+		}
+	}
+	
+	width:auto;
+	float:left;
 	background-color: $domb-color-light-grey;
 	padding:15px 40px;
+
+	@include media-query(palm){
+		float:none;
+	}
 	
 }
+
+/* class Styles */
 
 .nav--stacked > li > a{
 	display: inline-block;
 }
 
+#header, .btn, .card { box-shadow: 0px 1px 4px $domb-color-charcoal-s; }
+
 .btn{
+	color:black;
 	background-color: $domb-color-light-grey;
-	margin-bottom: 10px;
+	margin-bottom: $domb-border-size;
 	padding-left: 40px;
 
 	border-right: $domb-border-size solid $domb-color-light-grey;
 
 	@include vendor(transition, all 0.05s ease-in-out);
 	
+	&:focus{}
+	&:visited{color:black}
+
 	&:hover {
+		color:$domb-color-charcoal;
 		border-right-color: $domb-color-light-grey-h;
-		border-right-width: 8px;
+		border-right-width: $domb-border-size*1.5;
 	}
 	&:active { 
 		background-color: $domb-color-light-grey-s;
@@ -80,56 +136,55 @@ a{
 }
 
 .btn--lrg{
-	font-size: 2rem; /* overrides Inuit completely */
+	width:100%;
+	//min-width:220px;
+	text-align: right;
 }
 
 .card {
-	max-width:550px;
-	background: $domb-color-light-grey; /* $domb-color-light-grey */
+	//max-width:550px;
+	//min-width:433px;
+	background: $domb-color-light-grey;
 	
-	img { width:100%; }
+	img, iframe {
+		//width:100%;
+		margin-bottom: 0;
+		box-shadow:-2px 0px 4px -2px $domb-color-charcoal-s,
+		            2px 0px 4px -2px $domb-color-charcoal-s;
+	}
 
-	p { }
-
-	.title {
+	.project-title {
 		width:100%;
 		margin-bottom: 0;
 		padding:0.5em;
 		padding-left: 40px;
 		line-height: 1;
-		font-size: 2rem;
-		background-color: $domb-color-paradiso;
-		border-bottom:$domb-border-size solid $domb-color-paradiso-h;
+		font-size: 2em;
+	}
+	.text{
+		padding:0 40px;
+		border-bottom:1px solid $domb-color-light-grey-s;
+	}
+	.title{
+		@include font-size($h2-size);
+	}
+
+	.media{
+		border-top:$domb-border-size solid $domb-color-light-grey-h;
+		background-color:$domb-color-light-grey-s;
+		border-bottom:$domb-border-size solid $domb-color-light-grey-h;
+	}
+
+	.caption{
+		margin:auto;
+		text-align: center;
 	}
 
 }
 
+//colors for styling by category, most important called last
 
-
-.category-1, .interaction-design, .ui-ux, .web-design {
-	border-color: $domb-color-wasabi;
-
-	&:hover{border-color: $domb-color-wasabi-h}
-	&:active{border-color: $domb-color-wasabi-s}
-}
-
-.category-2, .web-development, .programming {
-	border-color: $domb-color-tulip-tree;
-
-	&:hover{border-color: $domb-color-tulip-tree-h}
-	&:active{border-color: $domb-color-tulip-tree-s}
-}
-
-.category-3, .computer-animation, .sound-design, .visual-effects, .character-design {
-	border-color: $domb-color-rust;
-
-	&:hover{border-color: $domb-color-rust-h}
-	&:active{border-color: $domb-color-rust-s}
-}
-
-.category-4, .branding, .typography {
-	border-color: $domb-color-paradiso;
-
-	&:hover{border-color: $domb-color-paradiso-h}
-	&:active{border-color: $domb-color-paradiso-s}
-}
+.category-4, .branding, .typography, .graphic-design { @include colorize($domb-color-tulip-tree, $domb-color-tulip-tree-h, $domb-color-tulip-tree-s) }
+.category-3, .computer-animation, .sound-design, .visual-effects, .character-design { @include colorize($domb-color-rust, $domb-color-rust-h, $domb-color-rust-s) }
+.category-2, .interaction-design, .ui-ux, .web-design {	@include colorize($domb-color-wasabi, $domb-color-wasabi-h, $domb-color-wasabi-s) }
+.category-1, .web-development, .programming { @include colorize($domb-color-paradiso, $domb-color-paradiso-h, $domb-color-paradiso-s) }

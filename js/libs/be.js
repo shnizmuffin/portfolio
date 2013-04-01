@@ -7,6 +7,9 @@ Behance = {
 
 Behance.Model = Backbone.Model.extend({
   
+  error : function(){
+      console.log('ERROR!')
+  },
   /**
    * Behance API is JSONP.
    * TODO - Link to documentation.

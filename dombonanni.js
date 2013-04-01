@@ -16,7 +16,7 @@ app.BehanceUser.fetch({
 		//console.log( app.BehanceUser.attributes.user );
 		//console.log( app.BehanceUser.attributes.projects.length );
 		//console.log( app.BehanceUser.attributes.first_name );
-		console.log( app );
+		//console.log( app );
 		
 	},
 	error:function(){
@@ -113,7 +113,9 @@ var NavItemView = Backbone.View.extend({
 		var app_view = new AppView({
 			model: new Behance.ProjectModel({id: this.model.get('id')})
 		});
-		console.log(this.model.get('id'));
+		
+		//console.log(this.model.get('id'));
+	
 	}
 });
 
@@ -178,9 +180,9 @@ var AppView = Backbone.View.extend({
     initialize: function (){
         //console.log(this.model);
 
-        _.bindAll(this, 'render', 'appendModule');
+        var self = this;
 
-		var self = this;
+        _.bindAll(this, 'render', 'appendModule');
 
 		this.model.fetch({
 			success:function(){
@@ -197,6 +199,8 @@ var AppView = Backbone.View.extend({
 
     render: function (){
     	
+    	var self = this;
+
     	var variables = {
     		item_description: this.model.get('description'),
     		item_title: this.model.get('name'),
@@ -210,25 +214,51 @@ var AppView = Backbone.View.extend({
 		_(this.model.get('modules')).each(function(item){
 				
 				//console.log(item.type);
-
-				if(item.type == 'text'){
-				 	console.log('text');
-				}
-				else if(item.type == 'image'){
-				 	console.log('image');
-				}
-				else if(item.type == 'embed'){
-					console.log('embed');
-				}
-				else {
-				 	console.log('something else, apparently : '+item.type);
-				}
+				var module = item;
+				self.appendModule(module);
 			
 			});
     },
 
     appendModule:function(module){
 
-    	
+    	if(module.type == 'text'){
+		 	//console.log('text');
+		 	var variables = {
+		 		item_text: module.text_plain
+
+		 	};
+
+		 	var template = _.template( $('#portfolio_text_template').html(), variables );
+		 	$('.card', this.el).append( template );
+		}
+		
+		else if(module.type == 'image'){
+		 	//console.log('image');
+
+		 	var variables = {
+		 		image_link: module.sizes.original,
+		 		image_caption: module.caption
+
+		 	};
+
+		 	var template = _.template( $('#portfolio_image_template').html(), variables );
+			$('.card', this.el).append( template );
+		}
+		
+		else if(module.type == 'embed'){
+			console.log('embed');
+
+			var variables = {
+				item_code: module.embed
+			}
+
+			var template = _.template( $('#portfolio_embed_template').html(), variables );
+			$('.card', this.el).append( template );
+		}
+		
+		else {
+		 	console.log('something else, apparently : '+module.type);
+		};
     }
 });
