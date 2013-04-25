@@ -12,12 +12,7 @@ app.BehanceUser = new Behance.UserModel({user: 'dombonanni'});
 app.BehanceUser.fetch({
 	success:function(){
 		console.log('WOOF: FETCH SUCCESS');
-		app.BehanceUser.getProjects();
-		//console.log( app.BehanceUser.attributes.user );
-		//console.log( app.BehanceUser.attributes.projects.length );
-		//console.log( app.BehanceUser.attributes.first_name );
-		//console.log( app );
-		
+		app.BehanceUser.getProjects();		
 	},
 	error:function(){
 		console.log('BARK: FETCH FAIL');
@@ -41,7 +36,7 @@ app.BehanceUser.fetch({
 // app.BehanceProject = new Behance.ProjectModel({id: 5741605});
 // app.BehanceProject.fetch({
 // 	success:function(){
-// 		var appView = new AppView();
+// 		console.log('WOOF: Project Fetch Success');
 // 	},
 
 // 	error:function(){
@@ -101,8 +96,6 @@ var NavItemView = Backbone.View.extend({
 		//we're just jamming in the categories as css classes, so lets make them look like classes.
 		variables.item_category = variables.item_category.toString().toLowerCase().replace(/[ /]/g, '-').replace(/,/g, ' ');
 
-		//console.log(variables.item_category);
-
 		var template = _.template( $("#nav_item_template").html(), variables);
 		$(this.el).html( template );
 
@@ -113,9 +106,7 @@ var NavItemView = Backbone.View.extend({
 		var app_view = new AppView({
 			model: new Behance.ProjectModel({id: this.model.get('id')})
 		});
-		
-		//console.log(this.model.get('id'));
-	
+			
 	}
 });
 
@@ -142,12 +133,11 @@ var NavView = Backbone.View.extend({
 
 		_(this.collection.models).each(function(item){
 		
-			//console.log(item);
 			self.appendItem(item);
-			
+		
 			},
 
-			this);
+		this);
 
 	},
 
@@ -156,8 +146,6 @@ var NavView = Backbone.View.extend({
 		var navItemView = new NavItemView({
 			model: item
 		});
-
-		//console.log('appendItem');
 		
 		var variables = {
 				item_cover: item.get('covers')[404],
@@ -167,7 +155,6 @@ var NavView = Backbone.View.extend({
 				};
 
 		$('#nav_item_container', this.el).append(navItemView.render(variables).el);
-		//this.$el.append('<h1 class="alpha">BUTTSLOL</h1>' + );
 
 	}
 
@@ -178,7 +165,6 @@ var AppView = Backbone.View.extend({
 	el: $('#portfolio_container'),
 
     initialize: function (){
-        //console.log(this.model);
 
         var self = this;
 
@@ -213,7 +199,6 @@ var AppView = Backbone.View.extend({
 
 		_(this.model.get('modules')).each(function(item){
 				
-				//console.log(item.type);
 				var module = item;
 				self.appendModule(module);
 			
@@ -223,7 +208,6 @@ var AppView = Backbone.View.extend({
     appendModule:function(module){
 
     	if(module.type == 'text'){
-		 	//console.log('text');
 		 	var variables = {
 		 		item_text: module.text_plain
 
@@ -234,7 +218,6 @@ var AppView = Backbone.View.extend({
 		}
 		
 		else if(module.type == 'image'){
-		 	//console.log('image');
 
 		 	var variables = {
 		 		image_link: module.sizes.original,
