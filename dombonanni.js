@@ -103,6 +103,8 @@ var NavItemView = Backbone.View.extend({
 	},
 
 	loadPortfolioItem: function(){
+		event.preventDefault();
+
 		var app_view = new AppView({
 			model: new Behance.ProjectModel({id: this.model.get('id')})
 		});
@@ -118,7 +120,7 @@ var NavView = Backbone.View.extend({
 		
 		_.bindAll(this, 'render', 'appendItem');
 
-		this.collection = app.BehanceUser.attributes.projects;
+		this.collection = app.BehanceUser.get('projects');
 		this.render();
 	},
 
@@ -199,10 +201,12 @@ var AppView = Backbone.View.extend({
 
 		_(this.model.get('modules')).each(function(item){
 				
-				var module = item;
-				self.appendModule(module);
-			
-			});
+			var module = item;
+			self.appendModule(module);
+		
+		});
+
+    	$('html,body').animate({scrollTop: $('#'+variables.item_id).offset().top},'slow');
     },
 
     appendModule:function(module){
@@ -221,7 +225,8 @@ var AppView = Backbone.View.extend({
 
 		 	var variables = {
 		 		image_link: module.sizes.original,
-		 		image_caption: module.caption
+		 		image_caption: module.caption,
+		 		image_caption_plain: module.caption_plain
 
 		 	};
 
@@ -244,4 +249,46 @@ var AppView = Backbone.View.extend({
 		 	console.log('something else, apparently : '+module.type);
 		};
     }
+});
+
+$('#filter-dev').click(function(){
+	console.log('filter cat 1');
+	
+	if(!$('.branding, .typography, .graphic-design, .computer-animation, .sound-design, .visual-effects, .character-design, .interaction-design, .ui-ux, .web-design').hasClass('.web-development, .programming')){
+		$('.branding, .typography, .graphic-design, .computer-animation, .sound-design, .visual-effects, .character-design, .interaction-design, .ui-ux, .web-design').hide();
+	};
+	$('.web-development, .programming').show();
+});
+
+$('#filter-web-design').click(function(){
+	
+		if(!$('.branding, .typography, .graphic-design, .computer-animation, .sound-design, .visual-effects, .character-design, .web-development, .programming').hasClass('.interaction-design, .ui-ux, .web-design')){
+		$('.branding, .typography, .graphic-design, .computer-animation, .sound-design, .visual-effects, .character-design, .web-development, .programming').hide();
+	};
+	$('.interaction-design, .ui-ux, .web-design').show();
+
+});
+
+$('#filter-graphic-design').click(function(){
+	console.log('filter cat 4');
+	$('.computer-animation, .sound-design, .visual-effects, .character-design').hide();
+	$('.interaction-design, .ui-ux, .web-design').hide();
+	$('.web-development, .programming').hide();
+	$('.branding, .typography, .graphic-design').show();
+});
+
+$('#filter-multimedia').click(function(){
+	console.log('filter cat 3');
+	$('.branding, .typography, .graphic-designign, .visual-effects, .character-design').hide();
+	$('.interaction-design, .ui-ux, .web-designign, .visual-effects, .character-design').hide();
+	$('.web-development, .programmingign, .visual-effects, .character-design').hide();
+	$('.computer-animation, .sound-design, .visual-effects, .character-design').show();
+});
+
+$('#unfilter').click(function(){
+	console.log('filter cat 1');
+	$('.branding, .typography, .graphic-design').show();
+	$('.computer-animation, .sound-design, .visual-effects, .character-design').show();
+	$('.interaction-design, .ui-ux, .web-design').show();
+	$('.web-development, .programming').show();
 });

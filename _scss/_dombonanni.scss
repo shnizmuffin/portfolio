@@ -76,6 +76,7 @@ a{
 	//width: auto;
 	//float: left;
 	margin-bottom: $domb-border-size;
+	// position:fixed;
 
 }
 
@@ -94,13 +95,25 @@ a{
 	
 	width:auto;
 	float:left;
+	clear:right;
 	background-color: $domb-color-light-grey;
 	padding:15px 40px;
+	margin-bottom:$domb-border-size;
 
 	@include media-query(palm){
 		float:none;
 	}
 	
+}
+
+#filter-nav{
+	float:left;
+	clear:both;
+
+	.category-1{ background-color:$domb-color-paradiso-h }
+	.category-2{ background-color:$domb-color-wasabi-h }
+	.category-3{ background-color:$domb-color-rust-h }
+	.category-4{ background-color:$domb-color-tulip-tree-h }
 }
 
 /* class Styles */
@@ -110,6 +123,12 @@ a{
 }
 
 #header, .btn, .card { box-shadow: 0px 1px 4px $domb-color-charcoal-s; }
+
+#nav_container{
+	min-width:200px;
+}
+
+#portfolio_container{}
 
 .btn{
 	color:black;
@@ -135,9 +154,8 @@ a{
 	}
 }
 
-.btn--lrg{
+.btn--item{
 	width:100%;
-	//min-width:220px;
 	text-align: right;
 }
 

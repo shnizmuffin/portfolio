@@ -15,12 +15,19 @@
         <div id="header">    
             <h1 class="giga">Dom Bonanni</h1>
         </div>
+        <ul class="nav nav--block" id="filter-nav">
+            <li><a class="btn btn--filter" id="unfilter" href="#">All Projects</a></li>
+            <li><a class="btn btn--filter category-1" id="filter-dev" href="#">Web Development</a></li>
+            <li><a class="btn btn--filter category-2" id="filter-web-design" href="#">Web Design</a></li>
+            <li><a class="btn btn--filter category-4" id="filter-graphic-design" href="#">Graphic Design</a></li>
+            <li><a class="btn btn--filter category-3" id="filter-multimedia" href="#">Multimedia</a></li>
+        </ul>
     </div><!-- /header_container -->
         
     <div class="grid one-quarter palm-one-whole" id="nav_container">
     </div><!-- /nav_container -->
 
-    <div class="grid three-quarters palm-one-whole" id="portfolio_container">        
+    <div class="grid three-fifths palm-one-whole" id="portfolio_container">        
     </div><!-- /portfolio -->
 
     <div class="grid one-whole" id="footer_container"><!-- open footer -->
@@ -43,7 +50,7 @@
 </script>
 
 <script type="text/template" id="nav_item_template">
-        <a class="btn btn--lrg <%= item_category %>" href="#<%= item_id %>" title="<%= item_title %>"><%= item_title %></a>
+        <a class="btn btn--item <%= item_category %>" href="#<%= item_id %>" title="<%= item_title %>"><%= item_title %></a>
 
 </script>
 
@@ -63,9 +70,9 @@
 
 <script type="text/template" id="portfolio_image_template">
     <div class="media">
-        <img class="img--center" src="<%= image_link %>" alt="<%= image_caption %>" title="<%= image_caption %>" />
+        <img class="img--center" src="<%= image_link %>" alt="<%= image_caption_plain %>" title="<%= image_caption_plain %>" />
     </div>
-    <div class="caption"><%= image_caption %></div>
+    <div class="caption"><%= image_caption_plain %></div>
 
 </script>
 
