@@ -236,7 +236,23 @@ a{
 }
 
 #footer_container{
-	padding-top:$domb-border-size;
+	//padding-top:$domb-border-size;
+	//float:right;
+	//position:fixed;
+	//right:-1*$base-spacing-unit;
+	// .nav{
+	// 	float:right;
+
+	// 	.btn{
+	// 		float: right;
+	// 		padding-right:40px;
+	// 	}
+	// }
+
+	@include media-query(palm){
+		position:fixed;
+		bottom:$domb-border-size;
+	}
 }
 
 //colors for styling by category, most important called last
