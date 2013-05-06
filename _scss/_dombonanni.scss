@@ -149,7 +149,9 @@ a{
 	min-width:200px;
 }
 
-#portfolio_container{}
+#portfolio_container{
+	padding-bottom:$base-spacing-unit*8;
+}
 
 .btn{
 	color:black;

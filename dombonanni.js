@@ -15,7 +15,7 @@ app.BehanceUser.fetch({
 		app.BehanceUser.getProjects();		
 	},
 	error:function(){
-		//console.log('BARK: FETCH FAIL');
+		console.log('BARK: FETCH FAIL');
 	}
 });
 
