@@ -299,3 +299,7 @@ $('#unfilter').click(function(){
 	$('.web-development, .programming').show();
 	//this.preventDefault();
 });
+
+$('#woosh').click(function(){
+	$('html,body').animate({scrollTop: $('html,body').offset().top},'slow');
+});
