@@ -11,11 +11,11 @@ app.BehanceUser = new Behance.UserModel({user: 'dombonanni'});
 
 app.BehanceUser.fetch({
 	success:function(){
-		console.log('WOOF: FETCH SUCCESS');
+		//console.log('WOOF: FETCH SUCCESS');
 		app.BehanceUser.getProjects();		
 	},
 	error:function(){
-		console.log('BARK: FETCH FAIL');
+		//console.log('BARK: FETCH FAIL');
 	}
 });
 
@@ -36,11 +36,11 @@ app.BehanceUser.fetch({
 // app.BehanceProject = new Behance.ProjectModel({id: 5741605});
 // app.BehanceProject.fetch({
 // 	success:function(){
-// 		console.log('WOOF: Project Fetch Success');
+// 		//console.log('WOOF: Project Fetch Success');
 // 	},
 
 // 	error:function(){
-// 		console.log('BARK: Project Fetch Fail')
+// 		//console.log('BARK: Project Fetch Fail')
 // 	}
 
 // };
@@ -91,7 +91,7 @@ var NavItemView = Backbone.View.extend({
 	render: function(info){
 		var variables = info;
 
-		console.log('rendering a NavItemView : ', this);
+		//console.log('rendering a NavItemView : ', this);
 
 		//we're just jamming in the categories as css classes, so lets make them look like classes.
 		variables.item_category = variables.item_category.toString().toLowerCase().replace(/[ /]/g, '-').replace(/,/g, ' ');
@@ -128,7 +128,7 @@ var NavView = Backbone.View.extend({
 		
 		var self = this;
 
-		console.log('rendering a NavView');
+		//console.log('rendering a NavView');
 
 		var template = _.template( $("#nav_template").html());
 		this.$el.append( template );
@@ -175,11 +175,11 @@ var AppView = Backbone.View.extend({
 		this.model.fetch({
 			success:function(){
 		 		self.render();
-		 		console.log('WOOF: Project Fetch Success : ', self);
+		 		//console.log('WOOF: Project Fetch Success : ', self);
 		 	},
 
 		 	error:function(){
-		 		console.log('BARK: Project Fetch Fail')
+		 		//console.log('BARK: Project Fetch Fail')
 		 	}
 
 		});
@@ -232,10 +232,16 @@ var AppView = Backbone.View.extend({
 
 		 	var template = _.template( $('#portfolio_image_template').html(), variables );
 			$('.card', this.el).append( template );
+
+			if (variables.image_caption_plain == null){
+				var culprit = $('.caption', this);
+				//console.log ('nerp:',culprit);
+				$('.caption', this.el).remove();
+			}
 		}
 		
 		else if(module.type == 'embed'){
-			console.log('embed');
+			//console.log('embed');
 
 			var variables = {
 				item_code: module.embed
@@ -246,13 +252,13 @@ var AppView = Backbone.View.extend({
 		}
 		
 		else {
-		 	console.log('something else, apparently : '+module.type);
+		 	//console.log('something else, apparently : '+module.type);
 		};
     }
 });
 
 $('#filter-dev').click(function(){
-	console.log('filter cat 1');
+	//console.log('filter cat 1');
 	
 	if(!$('.branding, .typography, .graphic-design, .computer-animation, .sound-design, .visual-effects, .character-design, .interaction-design, .ui-ux, .web-design').hasClass('.web-development, .programming')){
 		$('.branding, .typography, .graphic-design, .computer-animation, .sound-design, .visual-effects, .character-design, .interaction-design, .ui-ux, .web-design').hide();
@@ -270,7 +276,7 @@ $('#filter-web-design').click(function(){
 });
 
 $('#filter-graphic-design').click(function(){
-	console.log('filter cat 4');
+	//console.log('filter cat 4');
 	$('.computer-animation, .sound-design, .visual-effects, .character-design').hide();
 	$('.interaction-design, .ui-ux, .web-design').hide();
 	$('.web-development, .programming').hide();
@@ -278,7 +284,7 @@ $('#filter-graphic-design').click(function(){
 });
 
 $('#filter-multimedia').click(function(){
-	console.log('filter cat 3');
+	//console.log('filter cat 3');
 	$('.branding, .typography, .graphic-designign, .visual-effects, .character-design').hide();
 	$('.interaction-design, .ui-ux, .web-designign, .visual-effects, .character-design').hide();
 	$('.web-development, .programmingign, .visual-effects, .character-design').hide();
@@ -286,9 +292,10 @@ $('#filter-multimedia').click(function(){
 });
 
 $('#unfilter').click(function(){
-	console.log('filter cat 1');
+	//console.log('filter cat 1');
 	$('.branding, .typography, .graphic-design').show();
 	$('.computer-animation, .sound-design, .visual-effects, .character-design').show();
 	$('.interaction-design, .ui-ux, .web-design').show();
 	$('.web-development, .programming').show();
+	//this.preventDefault();
 });
